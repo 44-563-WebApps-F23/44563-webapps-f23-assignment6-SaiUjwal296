@@ -64,16 +64,33 @@
             alert("You got it right!");
         } 
         else
+
         {
+
             oops++; // Increment the 'oops' count
-            alert("Sorry");
-        }
-        if(oops >=7)
-        {
-            document.getElementById("guessbutton").onclick() = function()
+
+            if(oops >=7)
+
             {
-                alert("Sorry ran out of guess");
+
+                document.getElementById('guessbutton').onclick = function()
+
+                 {
+
+                    alert("Sorry ran out of guess");
+
+                 }
+
             }
+
+            else
+
+            {
+
+                alert("Sorry");
+
+            }
+
         }
         // Update the innerHTML for the results element
         document.getElementById("good-count").innerHTML = good;
