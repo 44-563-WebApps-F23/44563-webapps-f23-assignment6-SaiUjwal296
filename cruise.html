@@ -39,7 +39,7 @@
 
     <input type="button" onclick="updateCruise()" value="Update the cruise">
 </form>
-
+<p id ="result"></p>
 
 
 <script> 
@@ -50,7 +50,7 @@ out=document.getElementById("result")
 
 function selectCruise(){
 
-    if(document.getElementById("checkbox1").checked==true)
+    if(document.getElementById("sharesCabin").checked==true)
 {
         my_cruise["shared"]=true
 
@@ -66,7 +66,7 @@ function selectCruise(){
 
  
 
-        if(document.getElementById("checkbox2").checked==true){
+        if(document.getElementById("breakfast").checked==true){
 
             my_cruise["breakfast"]=true
 
@@ -82,7 +82,7 @@ function selectCruise(){
 
  
 
-        if(document.getElementById("checkbox3").checked==true){
+        if(document.getElementById("poolPass").checked==true){
 
             my_cruise["pool"]=true
 
