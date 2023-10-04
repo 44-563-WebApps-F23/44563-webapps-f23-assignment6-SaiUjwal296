@@ -43,39 +43,87 @@
 
 <script> 
 
-var my_cruise = {};
+var my_cruise={}
 
-        function selectCruise() {
-            // Reset the cruise object
-            my_cruise = {};
+out=document.getElementById("result")
 
-            // Get the checkbox elements
-            var sharesCabin = document.getElementById("sharesCabin");
-            var breakfast = document.getElementById("breakfast");
-            var poolPass = document.getElementById("poolPass");
+function selectCruise(){
 
-            // Set the properties of my_cruise based on checkbox selections
-            my_cruise.shared = sharesCabin.checked;
-            my_cruise.breakfast = breakfast.checked;
-            my_cruise.pool = poolPass.checked;
+    if(document.getElementById("checkbox1").checked==true)
+{
+        my_cruise["shared"]=true
 
-            // Display the cruise selection in the result element
-            document.getElementById("cruiseResult").innerHTML = JSON.stringify(my_cruise);
         }
-        
-        function updateCruise() {
-        // Get the values from the input elements
+
+        else{
+
+            my_cruise["shared"]=false
+
+ 
+
+        }
+
+ 
+
+        if(document.getElementById("checkbox2").checked==true){
+
+            my_cruise["breakfast"]=true
+
+        }
+
+ 
+
+        else{
+
+            my_cruise["breakfast"]=false
+
+        }
+
+ 
+
+        if(document.getElementById("checkbox3").checked==true){
+
+            my_cruise["pool"]=true
+
+        }
+
+        else{
+
+            my_cruise["pool"]=false
+
+        }
+
+        out.innerHTML=JSON.stringify(my_cruise)
+
+       
+
+}
+
+</script>
+
+ 
+
+<script>
+
+    out=document.getElementById("result")
+
+    function updateCruise(){
+
         var daysValue = document.getElementById("days").value;
+
         var priceValue = document.getElementById("price").value;
 
-        // Update the properties of my_cruise
-        my_cruise["days"] = daysValue;
-        my_cruise["price"] = priceValue;
+        my_cruise.daysValue=daysValue;
 
-        // Display the updated my_cruise object
-        document.getElementById("cruiseResult").innerHTML = JSON.stringify(my_cruise);
+        my_cruise.priceValue=priceValue;
+
+        out.innerHTML = JSON.stringify(my_cruise);
+
     }
+
 </script>
+
+has context menu
 
 </body>
 </html> 
