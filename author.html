@@ -1,42 +1,106 @@
 <!DOCTYPE html>
 <html>
-    <head>
-<title>Authors Recreation</title>
-    </head>
-    
- 
-<body>
+ <head>
+    <title>Author -Ujwal</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" 
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+ </head>
+    <body background-color="yellow">
 
-<h2>"Author entry" Ujwal</h2>
+
+<h3 class="mb-0"> Author entry - Ujwal </h3>
+    <h3 class="mb-0">Getting input</h3>
 
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
-
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
-
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+    <label class="col-lg-3 col-form-label form-control-label" for="hidden-author">The hidden author name</label>
+    <div class="col-lg-5">
+    <input type="password" class="form-control" id="hidden-author" value="Dickens">
+    </div>
+    </br>    
+        <!-- Input to check the guess -->
+    <label class="col-lg-3 col-form-label form-control-label" for="guess-author">Guess the author</label>
+    <div class="col-lg-5">
+    <input type="text" class="form-control" id="guess-author">
+</div>
+    </br>
+    <input type="button" id="guessbutton" onclick="checkAuthor()" value="Check the guess">
+</br>
 </form>
 
+</br>
+<div id="results">
+    Good: <span id="good-count">0</span></br>
+    Oops: <span id="oops-count">0</span>
+</div>
+</br>
 
-<p id="result">This text will be replaced </p>
-
-<script> 
-
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
+<div>
+    <img id="cityImage" src="atlanta.jpg" alt="City Image" width="100" height="100" onclick="selectImage()">
+</div>
+</div>
+</br>
+</br>
+</br>
+<script>
+    // Global variables
+    var good = 0;
+    var oops = 0;
+    var useImage = 1;
+    // Function to check the author guess
+    function checkAuthor() {
+        // Get the values from input elements
+        var hiddenAuthor = document.getElementById("hidden-author").value;
+        var guessAuthor = document.getElementById("guess-author").value;
+        // Compare the values
+        if (hiddenAuthor === guessAuthor) {
+            good++; // Increment the 'good' count
+            alert("You got it right!");
+        } 
+        else
+        {
+            oops++; // Increment the 'oops' count
+            alert("Sorry");
+        }
+        if(oops >=7)
+        {
+            document.getElementById("guessbutton").onclick() = function()
+            {
+                alert("Sorry ran out of guess");
+            }
+        }
+        // Update the innerHTML for the results element
+        document.getElementById("good-count").innerHTML = good;
+        document.getElementById("oops-count").innerHTML = oops;       
     }
-}
+
+    function selectImage() {
+            var imageElement = document.getElementById("cityImage");
+
+            // Use a switch statement to determine the next image
+            switch (useImage) {
+                case 1:
+                    imageElement.src = "san.jpg";
+                    useImage = 2;
+                    break;
+                case 2:
+                    imageElement.src = "Valencia.jpg";
+                    useImage = 3;
+                    break;
+                case 3:
+                    imageElement.src = "altanta.jpg"; // Wrap back to the first image
+                    useImage = 1;
+                    break;
+                default:
+                    break;
+            }
+        }
 </script>
 
 </body>
